@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// Não recebe e nem retorna nada
-	nome := "Luiz"
+	nome := "Luiz" // o := sem a palavra reservada var, quer dizer que eu estou a criar a variável e a inferir o tipo nela automaticamente
 	var versao float32 = 1.2
 	var idade int = 23
 
