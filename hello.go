@@ -1,11 +1,13 @@
 package main // É o principal pacote do programa
 
-import "fmt" // pacote de formatação
-import "reflect"
+import (
+	"fmt"
+	"reflect"
+) // pacote de formatação
 
 func main() {
 	// Não recebe e nem retorna nada
-	var nome = "Luiz"
+	nome := "Luiz"
 	var versao float32 = 1.2
 	var idade int = 23
 
