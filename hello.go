@@ -20,7 +20,17 @@ func main() {
 
 	fmt.Scan(&comando)
 
-	fmt.Println("Comando", comando)
+	// fmt.Println("Comando", comando)
+
+	if comando == 1 {
+		fmt.Println("Iniciar monitoramento selecionado")
+	} else if comando == 2 {
+		fmt.Println("Exibir logs selecinoado")
+	} else if comando == 3 {
+		fmt.Println("Saindo...")
+	} else {
+		fmt.Println("Comando inválido")
+	}
 }
 
 // fazer o build com go build arquivo.go
