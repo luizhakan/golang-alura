@@ -22,13 +22,27 @@ func main() {
 
 	// fmt.Println("Comando", comando)
 
-	if comando == 1 {
+	// if comando == 1 {
+	// 	fmt.Println("Iniciar monitoramento selecionado")
+	// } else if comando == 2 {
+	// 	fmt.Println("Exibir logs selecionado")
+	// } else if comando == 3 {
+	// 	fmt.Println("Saindo...")
+	// } else {
+	// 	fmt.Println("Comando inválido")
+	// }
+
+	switch comando {
+	case 1:
 		fmt.Println("Iniciar monitoramento selecionado")
-	} else if comando == 2 {
-		fmt.Println("Exibir logs selecinoado")
-	} else if comando == 3 {
+
+	case 2:
+		fmt.Println("Exibir logs selecionado")
+
+	case 3:
 		fmt.Println("Saindo...")
-	} else {
+
+	default:
 		fmt.Println("Comando inválido")
 	}
 }
