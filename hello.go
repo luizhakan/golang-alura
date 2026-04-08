@@ -13,41 +13,43 @@ import (
 func main() {
 	// Não recebe e nem retorna nada
 	exibeIntroducao()
-	exibeMenu()
-	// fmt.Println("Comando", comando)
+	for {
+		exibeMenu()
+		// fmt.Println("Comando", comando)
 
-	// nome := devolveNome()
-	// fmt.Printf("Tipo de nome %T\n", nome)
+		// nome := devolveNome()
+		// fmt.Printf("Tipo de nome %T\n", nome)
 
-	// _, idade := devolveNomeEIdade() // o _ aqui significa que, o primeiro retorno da função não será utilizado. Pode ser em qualquer índice do retorno
-	// _, idade := devolveNomeEIdade()
-	// fmt.Println(nome)
-	// fmt.Println(idade)
+		// _, idade := devolveNomeEIdade() // o _ aqui significa que, o primeiro retorno da função não será utilizado. Pode ser em qualquer índice do retorno
+		// _, idade := devolveNomeEIdade()
+		// fmt.Println(nome)
+		// fmt.Println(idade)
 
-	// if comando == 1 {
-	// 	fmt.Println("Iniciar monitoramento selecionado")
-	// } else if comando == 2 {
-	// 	fmt.Println("Exibir logs selecionado")
-	// } else if comando == 3 {
-	// 	fmt.Println("Saindo...")
-	// } else {
-	// 	fmt.Println("Comando inválido")
-	// }
+		// if comando == 1 {
+		// 	fmt.Println("Iniciar monitoramento selecionado")
+		// } else if comando == 2 {
+		// 	fmt.Println("Exibir logs selecionado")
+		// } else if comando == 3 {
+		// 	fmt.Println("Saindo...")
+		// } else {
+		// 	fmt.Println("Comando inválido")
+		// }
 
-	switch leComando() {
-	case 1:
-		iniciarMonitoramento()
+		switch leComando() {
+		case 1:
+			iniciarMonitoramento()
 
-	case 2:
-		fmt.Println("Exibir logs selecionado")
+		case 2:
+			fmt.Println("Exibir logs selecionado")
 
-	case 3:
-		fmt.Println("Saindo...")
-		os.Exit(0)
+		case 3:
+			fmt.Println("Saindo...")
+			os.Exit(0)
 
-	default:
-		fmt.Println("Comando inválido")
-		os.Exit(-1)
+		default:
+			fmt.Println("Comando inválido")
+			os.Exit(-1)
+		}
 	}
 }
 
