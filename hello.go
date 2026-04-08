@@ -87,16 +87,12 @@ func iniciarMonitoramento() {
 	var site string = "https://httpbin.org/status/500"
 	resp, _ := http.Get(site)
 
-	fmt.Println(resp.Status)
-
 	switch resp.StatusCode {
 	case 200:
 		fmt.Println("Está online")
 	case 404:
 		fmt.Println("Está fora do AR!")
-	case 500:
-		fmt.Println("Há algum erro no servidor")
 	default:
-		fmt.Println("Problema desconhecido. Código do erro: ", resp.StatusCode)
+		fmt.Println(resp.Status)
 	}
 }
