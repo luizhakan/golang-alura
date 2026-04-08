@@ -2,14 +2,27 @@ package main // É o principal pacote do programa
 
 import (
 	"fmt"
+	"net/http"
 	"os"
-) // pacote de formatação
+) // pacote de formatação e sistema operacional
+
+/*
+"net/http" é pacote mais específico à nossa necessidade. Já que nele temos funções para realizar requisições Get e Post.
+*/
 
 func main() {
 	// Não recebe e nem retorna nada
 	exibeIntroducao()
 	exibeMenu()
 	// fmt.Println("Comando", comando)
+
+	// nome := devolveNome()
+	// fmt.Printf("Tipo de nome %T\n", nome)
+
+	// _, idade := devolveNomeEIdade() // o _ aqui significa que, o primeiro retorno da função não será utilizado. Pode ser em qualquer índice do retorno
+	// _, idade := devolveNomeEIdade()
+	// fmt.Println(nome)
+	// fmt.Println(idade)
 
 	// if comando == 1 {
 	// 	fmt.Println("Iniciar monitoramento selecionado")
@@ -23,7 +36,7 @@ func main() {
 
 	switch leComando() {
 	case 1:
-		fmt.Println("Iniciar monitoramento selecionado")
+		iniciarMonitoramento()
 
 	case 2:
 		fmt.Println("Exibir logs selecionado")
@@ -61,4 +74,29 @@ func leComando() int {
 	fmt.Scan(&comandoLido)
 
 	return comandoLido
+}
+
+func devolveNomeEIdade() (string, int) {
+	var nome string = "Luiz"
+	var idade int = 23
+	return nome, idade
+}
+
+func iniciarMonitoramento() {
+	fmt.Println("Iniciar monitoramento selecionado")
+	var site string = "https://httpbin.org/status/500"
+	resp, _ := http.Get(site)
+
+	fmt.Println(resp.Status)
+
+	switch resp.StatusCode {
+	case 200:
+		fmt.Println("Está online")
+	case 404:
+		fmt.Println("Está fora do AR!")
+	case 500:
+		fmt.Println("Há algum erro no servidor")
+	default:
+		fmt.Println("Problema desconhecido. Código do erro: ", resp.StatusCode)
+	}
 }
