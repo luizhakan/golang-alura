@@ -14,6 +14,7 @@ func main() {
 	// Não recebe e nem retorna nada
 	exibeIntroducao()
 	for {
+		exibeNomes()
 		exibeMenu()
 		// fmt.Println("Comando", comando)
 
@@ -86,13 +87,14 @@ func devolveNomeEIdade() (string, int) {
 
 func iniciarMonitoramento() {
 	fmt.Println("Iniciar monitoramento selecionado")
-	var sites [4]string
+	var sites [4]string // array
 	sites[0] = "https://httpbin.org/status/500"
 	sites[1] = "https://httpbin.org/status/401"
 	sites[2] = "https://httpbin.org/status/201"
 	sites[3] = "https://httpbin.org/status/200"
 
-	fmt.Println(sites)
+	// fmt.Println(sites)
+	fmt.Println("O meu array tem capacidade para:", cap(sites), "itens")
 
 	// resp, _ := http.Get(sites)
 
@@ -104,4 +106,16 @@ func iniciarMonitoramento() {
 	// default:
 	// 	fmt.Println(resp.Status)
 	// }
+}
+
+func exibeNomes() {
+	nomes := []string{"Jon", "Snow"} // slice
+	fmt.Println("O meu slice tem:", len(nomes), "itens")
+	fmt.Println("O meu slice tem capacidade para:", cap(nomes), "itens")
+
+	nomes = append(nomes, "Targaryen")
+	fmt.Println("O meu slice tem:", len(nomes), "itens depois de eu adicionar mais 1")
+	fmt.Println("O meu slice tem capacidade para:", cap(nomes), "itens depois de eu adicionar mais 1")
+
+	fmt.Println(nomes)
 }
