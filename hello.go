@@ -14,6 +14,7 @@ func main() {
 	// Não recebe e nem retorna nada
 	exibeIntroducao()
 	for {
+		testaCap()
 		exibeNomes()
 		exibeMenu()
 		// fmt.Println("Comando", comando)
@@ -118,4 +119,20 @@ func exibeNomes() {
 	fmt.Println("O meu slice tem capacidade para:", cap(nomes), "itens depois de eu adicionar mais 1")
 
 	fmt.Println(nomes)
+}
+
+func testaCap() {
+	pontosPlanningPoker := []int{1, 2, 3, 5, 8, 13, 21}
+	fmt.Println(cap(pontosPlanningPoker))
+
+	pontosPlanningPoker = append(pontosPlanningPoker, 40)
+	fmt.Println(cap(pontosPlanningPoker))
+
+	pontosPlanningPoker = append(pontosPlanningPoker, 41)
+	fmt.Println(cap(pontosPlanningPoker))
+
+	pontosPlanningPoker = append(pontosPlanningPoker, 33)
+	fmt.Println(cap(pontosPlanningPoker))
+
+	fmt.Println(pontosPlanningPoker)
 }
