@@ -2,7 +2,7 @@ package main // É o principal pacote do programa
 
 import (
 	"fmt"
-	"net/http"
+	// "net/http"
 	"os"
 ) // pacote de formatação e sistema operacional
 
@@ -86,15 +86,22 @@ func devolveNomeEIdade() (string, int) {
 
 func iniciarMonitoramento() {
 	fmt.Println("Iniciar monitoramento selecionado")
-	var site string = "https://httpbin.org/status/500"
-	resp, _ := http.Get(site)
+	var sites [4]string
+	sites[0] = "https://httpbin.org/status/500"
+	sites[1] = "https://httpbin.org/status/401"
+	sites[2] = "https://httpbin.org/status/201"
+	sites[3] = "https://httpbin.org/status/200"
 
-	switch resp.StatusCode {
-	case 200:
-		fmt.Println("Está online")
-	case 404:
-		fmt.Println("Está fora do AR!")
-	default:
-		fmt.Println(resp.Status)
-	}
+	fmt.Println(sites)
+
+	// resp, _ := http.Get(sites)
+
+	// switch resp.StatusCode {
+	// case 200:
+	// 	fmt.Println("Está online")
+	// case 404:
+	// 	fmt.Println("Está fora do AR!")
+	// default:
+	// 	fmt.Println(resp.Status)
+	// }
 }
