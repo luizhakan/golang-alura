@@ -1,0 +1,4 @@
+https://youtube.com- online:true
+https://google.com- online:true
+https://x.com- online:true
+https://music.youtube.com- online:true

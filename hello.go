@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 ) // pacote de formatação e sistema operacional
@@ -139,10 +140,13 @@ func testaSite(site string) {
 	switch resp.StatusCode {
 	case 200:
 		fmt.Println("Está online")
+		registraLog(site, true)
 	case 404:
 		fmt.Println("Está fora do AR!")
+		registraLog(site, false)
 	default:
 		fmt.Println(resp.Status)
+		registraLog(site, false)
 
 	}
 }
@@ -197,4 +201,16 @@ func leSitesDoArquivo() []string {
 
 	arquivo.Close()
 	return sites
+}
+
+func registraLog(site string, status bool) {
+	arquivo, erro := os.OpenFile("logs.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+
+	if erro != nil {
+		fmt.Println("Ocorreu um erro:", erro)
+	}
+
+	arquivo.WriteString(site + "- online:" + strconv.FormatBool(status) + "\n")
+
+	arquivo.Close()
 }
