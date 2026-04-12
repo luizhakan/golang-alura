@@ -133,18 +133,18 @@ func iniciarMonitoramento() {
 // 	fmt.Println(nomes)
 // }
 
-func testaCap() {
-	pontosPlanningPoker := []int{1, 2, 3, 5, 8, 13, 21}
-	// fmt.Println(cap(pontosPlanningPoker))
+// func testaCap() {
+// 	pontosPlanningPoker := []int{1, 2, 3, 5, 8, 13, 21}
+// 	// fmt.Println(cap(pontosPlanningPoker))
 
-	pontosPlanningPoker = append(pontosPlanningPoker, 40)
-	// fmt.Println(cap(pontosPlanningPoker))
+// 	pontosPlanningPoker = append(pontosPlanningPoker, 40)
+// 	// fmt.Println(cap(pontosPlanningPoker))
 
-	pontosPlanningPoker = append(pontosPlanningPoker, 41)
-	// fmt.Println(cap(pontosPlanningPoker))
+// 	pontosPlanningPoker = append(pontosPlanningPoker, 41)
+// 	// fmt.Println(cap(pontosPlanningPoker))
 
-	pontosPlanningPoker = append(pontosPlanningPoker, 33)
-	// fmt.Println(cap(pontosPlanningPoker))
+// 	pontosPlanningPoker = append(pontosPlanningPoker, 33)
+// 	// fmt.Println(cap(pontosPlanningPoker))
 
-	// fmt.Println(pontosPlanningPoker)
-}
+// 	// fmt.Println(pontosPlanningPoker)
+// }
