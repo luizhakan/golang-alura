@@ -1,9 +1,12 @@
 package main // É o principal pacote do programa
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 ) // pacote de formatação e sistema operacional
 
@@ -97,7 +100,8 @@ func iniciarMonitoramento() {
 	// sites[1] = "https://httpbin.org/status/401"
 	// sites[2] = "https://httpbin.org/status/201"
 	// sites[3] = "https://httpbin.org/status/200"
-	sites := []string{"https://httpbin.org/status/500", "https://httpbin.org/status/401", "https://httpbin.org/status/201", "https://httpbin.org/status/200"}
+	// sites := []string{"https://httpbin.org/status/500", "https://httpbin.org/status/401", "https://httpbin.org/status/201", "https://httpbin.org/status/200"}
+	var sites []string = leSitesDoArquivo()
 
 	fmt.Println(sites)
 	// fmt.Println("O meu array tem capacidade para:", cap(sites), "itens")
@@ -170,3 +174,27 @@ func testaSite(site string) {
 
 // 	// fmt.Println(pontosPlanningPoker)
 // }
+
+func leSitesDoArquivo() []string {
+	var sites []string
+	arquivo, erro := os.Open("sites.txt")
+
+	if erro != nil {
+		fmt.Println("Ocorreu um erro", erro)
+	} else {
+		fmt.Println(arquivo)
+	}
+
+	leitor := bufio.NewReader(arquivo)
+	for {
+		linha, err := leitor.ReadString('\n')
+		linha = strings.TrimSpace(linha)
+		sites = append(sites, linha)
+		if err == io.EOF {
+			break
+		}
+	}
+
+	arquivo.Close()
+	return sites
+}
