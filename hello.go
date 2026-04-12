@@ -50,7 +50,7 @@ func main() {
 			iniciarMonitoramento()
 
 		case 2:
-			fmt.Println("Exibir logs selecionado")
+			exibirLogs()
 
 		case 3:
 			fmt.Println("Saindo...")
@@ -212,5 +212,29 @@ func registraLog(site string, status bool) {
 
 	arquivo.WriteString(time.Now().Format("02/01/2006 15:04:05") + " - " + site + "- online:" + strconv.FormatBool(status) + "\n")
 
+	arquivo.Close()
+}
+
+func exibirLogs() {
+	arquivo, erro := os.Open("logs.txt")
+
+	if erro != nil {
+		fmt.Println("Ocorreu um erro:", erro)
+	} else {
+		fmt.Println(arquivo)
+	}
+
+	leitor := bufio.NewReader(arquivo)
+	for {
+		linha, err := leitor.ReadString('\n')
+		linha = strings.TrimSpace(linha)
+		fmt.Println(linha)
+
+		if err == io.EOF {
+			break
+		}
+
+		fmt.Println("linha")
+	}
 	arquivo.Close()
 }
