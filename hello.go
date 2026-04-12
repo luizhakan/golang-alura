@@ -4,17 +4,21 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
 ) // pacote de formatação e sistema operacional
 
 /*
 "net/http" é pacote mais específico à nossa necessidade. Já que nele temos funções para realizar requisições Get e Post.
 */
 
+const monitoramentos = 3
+const delay = 5
+
 func main() {
 	// Não recebe e nem retorna nada
 	exibeIntroducao()
 	for {
-		testaCap()
+		// testaCap()
 		// exibeNomes()
 		exibeMenu()
 		// fmt.Println("Comando", comando)
@@ -113,11 +117,29 @@ func iniciarMonitoramento() {
 	// 	fmt.Println(sites[i])
 	// }
 
-	for indice, site := range sites {
-		fmt.Println("\nPosição:", indice)
-		fmt.Println("Site:", site)
-		resp, _ := http.Get(site)
-		fmt.Println("O site", site, "recebe o status:", resp.Status)
+	for indice := 0; indice < monitoramentos; indice++ {
+		for indice, site := range sites {
+			fmt.Println("\nPosição:", indice)
+			fmt.Println("Site:", site)
+			// fmt.Println("O site", site, "recebe o status:", resp.Status)
+			testaSite(site)
+			fmt.Println()
+		}
+		time.Sleep(delay * time.Second)
+	}
+}
+
+func testaSite(site string) {
+	resp, _ := http.Get(site)
+
+	switch resp.StatusCode {
+	case 200:
+		fmt.Println("Está online")
+	case 404:
+		fmt.Println("Está fora do AR!")
+	default:
+		fmt.Println(resp.Status)
+
 	}
 }
 
