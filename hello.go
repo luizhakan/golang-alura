@@ -2,7 +2,7 @@ package main // É o principal pacote do programa
 
 import (
 	"fmt"
-	// "net/http"
+	"net/http"
 	"os"
 ) // pacote de formatação e sistema operacional
 
@@ -15,7 +15,7 @@ func main() {
 	exibeIntroducao()
 	for {
 		testaCap()
-		exibeNomes()
+		// exibeNomes()
 		exibeMenu()
 		// fmt.Println("Comando", comando)
 
@@ -88,14 +88,15 @@ func devolveNomeEIdade() (string, int) {
 
 func iniciarMonitoramento() {
 	fmt.Println("Iniciar monitoramento selecionado")
-	var sites [4]string // array
-	sites[0] = "https://httpbin.org/status/500"
-	sites[1] = "https://httpbin.org/status/401"
-	sites[2] = "https://httpbin.org/status/201"
-	sites[3] = "https://httpbin.org/status/200"
+	// var sites [4]string // array
+	// sites[0] = "https://httpbin.org/status/500"
+	// sites[1] = "https://httpbin.org/status/401"
+	// sites[2] = "https://httpbin.org/status/201"
+	// sites[3] = "https://httpbin.org/status/200"
+	sites := []string{"https://httpbin.org/status/500", "https://httpbin.org/status/401", "https://httpbin.org/status/201", "https://httpbin.org/status/200"}
 
-	// fmt.Println(sites)
-	fmt.Println("O meu array tem capacidade para:", cap(sites), "itens")
+	fmt.Println(sites)
+	// fmt.Println("O meu array tem capacidade para:", cap(sites), "itens")
 
 	// resp, _ := http.Get(sites)
 
@@ -107,32 +108,43 @@ func iniciarMonitoramento() {
 	// default:
 	// 	fmt.Println(resp.Status)
 	// }
+
+	// for i := 0; i < len(sites); i++ {
+	// 	fmt.Println(sites[i])
+	// }
+
+	for indice, site := range sites {
+		fmt.Println("\nPosição:", indice)
+		fmt.Println("Site:", site)
+		resp, _ := http.Get(site)
+		fmt.Println("O site", site, "recebe o status:", resp.Status)
+	}
 }
 
-func exibeNomes() {
-	nomes := []string{"Jon", "Snow"} // slice
-	fmt.Println("O meu slice tem:", len(nomes), "itens")
-	fmt.Println("O meu slice tem capacidade para:", cap(nomes), "itens")
+// func exibeNomes() {
+// 	nomes := []string{"Jon", "Snow"} // slice
+// 	fmt.Println("O meu slice tem:", len(nomes), "itens")
+// 	fmt.Println("O meu slice tem capacidade para:", cap(nomes), "itens")
 
-	nomes = append(nomes, "Targaryen")
-	fmt.Println("O meu slice tem:", len(nomes), "itens depois de eu adicionar mais 1")
-	fmt.Println("O meu slice tem capacidade para:", cap(nomes), "itens depois de eu adicionar mais 1")
+// 	nomes = append(nomes, "Targaryen")
+// 	fmt.Println("O meu slice tem:", len(nomes), "itens depois de eu adicionar mais 1")
+// 	fmt.Println("O meu slice tem capacidade para:", cap(nomes), "itens depois de eu adicionar mais 1")
 
-	fmt.Println(nomes)
-}
+// 	fmt.Println(nomes)
+// }
 
 func testaCap() {
 	pontosPlanningPoker := []int{1, 2, 3, 5, 8, 13, 21}
-	fmt.Println(cap(pontosPlanningPoker))
+	// fmt.Println(cap(pontosPlanningPoker))
 
 	pontosPlanningPoker = append(pontosPlanningPoker, 40)
-	fmt.Println(cap(pontosPlanningPoker))
+	// fmt.Println(cap(pontosPlanningPoker))
 
 	pontosPlanningPoker = append(pontosPlanningPoker, 41)
-	fmt.Println(cap(pontosPlanningPoker))
+	// fmt.Println(cap(pontosPlanningPoker))
 
 	pontosPlanningPoker = append(pontosPlanningPoker, 33)
-	fmt.Println(cap(pontosPlanningPoker))
+	// fmt.Println(cap(pontosPlanningPoker))
 
-	fmt.Println(pontosPlanningPoker)
+	// fmt.Println(pontosPlanningPoker)
 }
